@@ -4,8 +4,11 @@
       "title": "Home", "type": "link", "active": false, "path": "/home"
     },
     {
-      "title": "Shop", "type": "link", "active": false, "path": "/collection/leftsidebar/all"
-    }    
+      "title": "Shop", "type": "link", "active": false, "path": "/shop/all"
+    },
+    {
+      "title": "Blog", "type": "link", "active": false, "path": "/blog/blog-rightsidebar"
+    }        
   ],
     "tt": [
           {

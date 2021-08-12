@@ -13,6 +13,7 @@ const state = {
 const getters = {
   filterbyCategory: (state) => {
     const category = [...new Set(state.products.map(product => product.type))]
+    console.log("category", category)
     return category
   },
   filterbyBrand: (state) => {
@@ -130,6 +131,7 @@ const actions = {
     context.commit('getpaginate', payload)
   },
   getCategoryFilter: (context, payload) => {
+    console.log("action", context, payload)
     context.commit('getCategoryFilter', payload)
   },
   priceFilter: (context, payload) => {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <Breadcrumbs title="collection" />
+    <Breadcrumbs title="Shop" />
     <section class="section-b-space ratio_asos">
       <div class="collection-wrapper">
         <div class="container">
@@ -112,7 +112,7 @@
                           </div>
                           <div
                           class="col-grid-box"
-                          :class="{'col-lg-3 col-md-4 col-sm-6':col4 == true, 'col-lg-4 col-sm-6':col3 == true, 'col-sm-6':col2 == true, 'col-lg-2 col-md-4 col-sm-6':col6 == true, 'col-lg-12':listview == true}"
+                          :class="{'col-lg-3':col4 == true, 'col-lg-4':col3 == true, 'col-lg-6':col2 == true, 'col-lg-2':col6 == true, 'col-lg-12':listview == true}"
                           v-for="(product,index) in filterProduct"
                           :key="index"
                           v-show="setPaginate(index)"
@@ -137,8 +137,8 @@
                             <div class="col-xl-6 col-md-6 col-sm-12">
                               <nav aria-label="Page navigation">
                                 <ul class="pagination">
-                                  <li class="page-item">
-                                    <a class="page-link" href="javascript:void(0)"  @click="updatePaginate(current-1)">
+                                  <li class="page-item" :class="{'disable': current == 1 }">
+                                    <a class="page-link" href="javascript:void(0)" @click="updatePaginate(current-1)">
                                       <span aria-hidden="true">
                                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
                                       </span>
@@ -151,7 +151,7 @@
                                       @click.prevent="updatePaginate(page_index)"
                                     >{{ page_index }}</a>
                                   </li>
-                                  <li class="page-item">
+                                  <li class="page-item" :class="{'disable': current == this.paginates }">
                                     <a class="page-link" href="javascript:void(0)" @click="updatePaginate(current+1)">
                                       <span aria-hidden="true">
                                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -193,7 +193,7 @@
   </div>
 </template>
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import productBox1 from '../../components/product-box/product-box6'
 import Header from '../../components/header/header2'
 import Footer from '../../components/footer/footer1'
@@ -217,8 +217,8 @@ export default {
     return {
       bannerimagepath: require('@/assets/images/side-banner.png'),
       col2: false,
-      col3: true,
-      col4: false,
+      col3: false,
+      col4: true,
       col6: false,
       listview: false,
       priceArray: [],
@@ -247,10 +247,6 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      productslist: state => state.products.productslist,
-      currency: state => state.products.currency
-    }),
     ...mapGetters({
       filterProduct: 'filter/filterProducts',
       tags: 'filter/setTags',
@@ -261,20 +257,6 @@ export default {
     this.updatePaginate(1)
   },
   methods: {
-    getCategoryProduct(collection) {
-      return this.productslist.filter((item) => {
-        if (item.collection.find(i => i === collection)) {
-          return item
-        }
-      })
-    },
-    getImgUrl(path) {
-      return require('@/assets/images/' + path)
-    },
-    discountedPrice(product) {
-      const price = product.price - (product.price * product.discount / 100)
-      return price
-    },
     onChangeSort(event) {
       this.$store.dispatch('filter/sortProducts', event.target.value)
     },
@@ -328,9 +310,11 @@ export default {
     },
     getCategoryFilter() {
       this.updatePaginate(1)
+      console.log(this.$route.params)
       this.$store.dispatch('filter/getCategoryFilter', this.$route.params.id)
     },
     allfilter(selectedVal) {
+      console.log("allfilter")
       this.allfilters = selectedVal
       this.$store.dispatch('filter/setTags', selectedVal)
       this.getPaginate()
