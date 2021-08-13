@@ -23,7 +23,7 @@ export default {
   },
 
   router: {
-    base: 'vue_cho_phien'
+    base: '/vue_cho_phien/'
   },
   /*
   ** Customize the progress-bar color
