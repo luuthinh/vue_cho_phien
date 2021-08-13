@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/page/element/multi-slider", {data:[{}],fetch:{},mutations:[]});

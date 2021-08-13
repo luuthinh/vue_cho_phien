@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/page/element/product-tabs", {data:[{}],fetch:{},mutations:[]});

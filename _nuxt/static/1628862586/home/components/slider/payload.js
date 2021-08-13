@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/home/components/slider", {data:[{}],fetch:{},mutations:[]});
