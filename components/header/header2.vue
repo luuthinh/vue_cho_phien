@@ -17,7 +17,7 @@
                   <LeftSidebar :leftSidebarVal="leftSidebarVal" @closeVal="closeBarValFromChild" />
                 </div>
                 <div class="brand-logo">
-                  <nuxt-link :to="{ path: '/shop/fashion'}">
+                  <nuxt-link :to="{ path: '/'}">
                     <img :src='"@/assets/images/icon/logo.png"' class="img-fluid" alt />
                   </nuxt-link>
                 </div>

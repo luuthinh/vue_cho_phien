@@ -1,5 +1,6 @@
 
 export default {
+  target: 'static',
   mode: 'universal',
   subdirectory: '/multikart/',
   /*
@@ -22,7 +23,7 @@ export default {
   },
 
   router: {
-    base: '/'
+    base: 'vue_cho_phien'
   },
   /*
   ** Customize the progress-bar color
