@@ -1,8 +1,7 @@
 
 export default {
-  target: 'static',
   mode: 'universal',
-  subdirectory: '/multikart/',
+  subdirectory: '/cho_phien/',
   /*
   ** Headers of the page
   */
@@ -23,7 +22,7 @@ export default {
   },
 
   router: {
-    base: '/vue_cho_phien/'
+    base: '/'
   },
   /*
   ** Customize the progress-bar color
@@ -40,8 +39,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-     { src: '~/plugins/plugin.js', ssr:false },
-     { src: '~/plugins/localStorage.js', ssr:false },
+    //  { src: '~/plugins/plugin.js', ssr:false },
+    //  { src: '~/plugins/localStorage.js', ssr:false },
   ],
   /*
   ** Nuxt.js modules
@@ -68,6 +67,9 @@ export default {
     transpile: [
       "vee-validate/dist/rules"
     ],
+    babel: {
+      compact: true
+    },    
     /*
     ** You can extend webpack config here
     */

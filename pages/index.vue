@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <Vegetables />
-  </div>
+  <Home />
 </template>
 
 <script>
-const Vegetables = () => import('./home')
+const Home = () => import('./home')
 export default {
   components: {
-    Vegetables
+    Home
   }
 }
 </script>
