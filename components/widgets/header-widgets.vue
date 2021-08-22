@@ -42,7 +42,7 @@
                                                           <h6>{{product.title}}</h6>
                                                       </nuxt-link>
                                                   </div>
-                                                    <h4>{{product.price}} Đ </h4>
+                                                    <h4>{{product.price}} đ</h4>
                                               </li>
                                           </ul>
                                       </div>
@@ -51,6 +51,53 @@
                           </div>
                       </div>
                   </div>
+              </li>
+              <li class="onhover-div mobile-cart">
+                <div>
+                  <img alt :src='"@/assets/images/icon/layout4/cart.png"' class="img-fluid">
+                  <i class="ti-shopping-cart"></i>
+                  <span class="cart_qty_cls">{{cart.length}}</span>
+                </div>
+                <ul class="show-div shopping-cart" v-if="cart.length">
+                  <li v-for="(item,index) in cart" :key="index">
+                    <div class="media">
+                      <nuxt-link :to="{path:'/product/sidebar/' + item.id}">
+                        <img alt class="mr-3" :src='getImgUrl(item.images[0].src)'>
+                      </nuxt-link>
+                      <div class="media-body">
+                        <nuxt-link :to="{path: '/product/siderbar/' + item.id}">
+                          <h4>{{item.title}}</h4>
+                        </nuxt-link>
+                        <h4>
+                          <span>{{item.quantity}} x {{item.price}} đ</span>
+                        </h4>
+                      </div>
+                    </div>
+                    <div class="close-circle">
+                      <a href="#" @click='removeCartItem(item)'>
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="total">
+                      <h5>
+                        Thành tiền :
+                        <span>{{ cartTotal | 'đ'}}</span>
+                      </h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="buttons">
+                      <nuxt-link :to="{path:'/page/account/cart'}" :class="'view-cart'">
+                        Xem giỏ hàng
+                      </nuxt-link>
+                      <nuxt-link :to="{path:'/page/account/checkout'}" :class="'checkout'">
+                        Thanh toán
+                      </nuxt-link>
+                    </div>
+                  </li>
+                </ul>
               </li>
           </ul>
       </div>

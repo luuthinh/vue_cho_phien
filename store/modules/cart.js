@@ -6,7 +6,7 @@ const state = {
 }
 
 const getters = {
-    carItems: (state) => {
+    cartItems: (state) => {
         return state.cart
     },
     cartTotalAmount: (state) => {
